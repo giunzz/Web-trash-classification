@@ -1,0 +1,108 @@
+<html>
+<head>
+	<meta charset = "utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content = "ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<title>success</title>
+</head>
+
+<style>
+	article, aside, figure, footer, header, hgroup, 
+	menu, nav, section { display: block; }
+</style>
+
+<body>
+	<nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+			<a class="navbar-brand" href="#">
+				<img src="https://th.bing.com/th/id/R.ade18d512e729fff854b4bafd5a16a80?rik=LzU3OZUvBED9hA&riu=http%3a%2f%2forig05.deviantart.net%2f2365%2ff%2f2012%2f277%2f5%2fb%2fisland_by_3o2-d5gtdfm.png&ehk=18m10YmoJmXy%2biTJImfdbcDQLKzLcU5R2Hwpjib%2fkk4%3d&risl=&pid=ImgRaw&r=0
+				" width="100" height="100"> 
+			</a>           
+            <a class="ml-auto"><p>Hoàng Ngọc Dung</p></a>
+        </div>
+    </nav>
+
+	<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+				<img src="https://th.bing.com/th/id/R.e076842d59457d25d07294b73c3f30a0?rik=AGzedx0CsdkyXA&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2016%2f01%2fDesktop-Background-43.jpg&ehk=BFXGJRPE2FRZbII7F02CkND4uQN3Ek%2ff4S9eCaxPjO4%3d&risl=&pid=ImgRaw&r=0" alt="photo 1">
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+		<div class=carousel-caption>
+			<h1 class="display-1">Phân loại rác</h1>
+			<h2>using ClassificationModule</h2>
+		</div>
+    </div>
+	<h2>Ảnh đã upload</h2>
+	<p>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<ul>
+		{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	{% endwith %}
+	{% if filename %}
+		<div>
+			<img src="{{ url_for('display_image', filename=filename) }}">
+		</div>	
+	{% endif %}
+	<div class="file-upload-content">
+		<h2> Predicted class of trash: {{pre}} </h2>
+		<!-- <img class="file-upload-image" src="{{pre}}" alt="Trash Image" /> -->
+
+		<img src="{{pre}}" alt="Predicted">
+	</div>
+
+
+	
+
+</body>
+
+</html>
+
+
+
+
+ <!-- <!doctype html>
+<title>Python Flask Image Upload and Display Example</title>
+ <h2>Select an image to upload and display</h2>
+ <p>
+	 {% with messages = get_flashed_messages() %}
+	   {% if messages %}
+		 <ul>
+		 {% for message in messages %}
+		   <li>{{ message }}</li>
+		 {% endfor %}
+		 </ul>
+	   {% endif %}
+	 {% endwith %}
+ </p>
+ {% if filename %}
+	 <div>
+		 <img src="{{ url_for('display_image', filename=filename) }}">
+	 </div>
+ {% endif %} -->
+ <!-- <form method="post" action="/" enctype="multipart/form-data">
+	 <dl>
+		 <p>
+			 <input type="file" name="file" autocomplete="off" required>
+		 </p>
+	 </dl>
+	 <p>
+		 <input type="submit" value="Submit">
+	 </p> -->
+ <!-- </form> -->
