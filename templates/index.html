@@ -1,115 +1,353 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang ="en">
 <head>
-	<meta charset = "utf-8">
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="/staticFiles/styles.css" />
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous"
+    />
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap"
+        rel="stylesheet"
+    />
+    <link
+        href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap"
+        rel="stylesheet"
+    />
+
+    <link rel="stylesheets" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <meta http-equiv="x-ua-compatible" content = "ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-	<title>Trash Classification</title>
+	<!-- <link rel = 'icon' href="/staticFiles/favicon.ico"> -->
+    <link rel="shortcut icon" href="staticFiles/favicon.ico">
+
+    
+    <title>Trash Classification</title>
 </head>
 
-<style>
-	article, aside, figure, footer, header, hgroup, 
-	menu, nav, section { display: block; }
-</style>
+    <style>
+        article, aside, figure, footer, header, hgroup, 
+        menu, nav, section { display: block; }
 
+        * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        vertical-align: baseline;
+        }
+        #quote-box {
+            border-radius: 3px;
+            position: relative;
+            width: 450px;
+            padding: 40px 50px;
+            display: table;
+            background-color: #fff;
+            .quote-text {
+                i {
+                font-size: 1em;
+                margin-right: 0.4em;
+                }
+            text-align: center;
+            width: 450px;
+            height: auto;
+            clear: both;
+            font-weight: 500;
+            font-size: 1.75em;
+            }
+        }
+        .buttons {
+            width: 450px;
+            margin: auto;
+            display: block;
+
+            .button {
+                height: 38px;
+                border: none;
+                border-radius: 3px;
+                color: #fff;
+                background-color: #333;
+                outline: none;
+                font-size: 0.85em;
+                padding: 8px 18px 6px 18px;
+                margin-top: 30px;
+                opacity: 1;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.9;
+                }
+
+            &#new-quote {
+                float: right;
+            }
+            }
+        }  
+    </style>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-			<a class="navbar-brand" href="#">
-				<img src="https://th.bing.com/th/id/R.ade18d512e729fff854b4bafd5a16a80?rik=LzU3OZUvBED9hA&riu=http%3a%2f%2forig05.deviantart.net%2f2365%2ff%2f2012%2f277%2f5%2fb%2fisland_by_3o2-d5gtdfm.png&ehk=18m10YmoJmXy%2biTJImfdbcDQLKzLcU5R2Hwpjib%2fkk4%3d&risl=&pid=ImgRaw&r=0
-				" width="100" height="100"> 
-			</a>           
-            <a class="ml-auto"><p>Hoàng Ngọc Dung</p></a>
-        </div>
+    <nav id="navbar" class="nav">
+        <ul class="nav-list">
+            <li>
+                <a href="#welcome-section">About</a>
+            </li>
+            <li>
+                <a href="#projects">Work</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
     </nav>
-	
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-				<img src="https://th.bing.com/th/id/R.e076842d59457d25d07294b73c3f30a0?rik=AGzedx0CsdkyXA&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2016%2f01%2fDesktop-Background-43.jpg&ehk=BFXGJRPE2FRZbII7F02CkND4uQN3Ek%2ff4S9eCaxPjO4%3d&risl=&pid=ImgRaw&r=0" alt="photo 1">
-        </div>
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </a>
-		<div class=carousel-caption>
-			<h1 class="display-1">Phân loại rác</h1>
-			<h2>using ClassificationModule</h2>
-		</div>
-    </div>
 
-	<hr>
-    <div class="container-fluid padding">
-        <div class="row welcome text-center">
-            <div class="col-12">
-                <h1 class="display-5">Classify Trash</h1>
-            </div>
-            <hr>
-            <div class="col-12">
-                <hr>
-                <p class="lead">
-                    Up cái ảnh ở đây nè
-                </p>
-            </div>
-        </div>
-    </div>
 
-	<div class="container">
-        <div class="row">
-            <div class = "col-8 col-sm-8 offset-3">
-                <label for="avatar">Please choose a picture:</label>
-                <!-- <form action="/upload" method="post" enctype="multipart/form-data">
-                    <div class="image-upload-wrap">
-    
-                        <span class="btn btn-default btn-file">
-                            <input class="file-upload-input" onchange="readURL(this);" type="file" name="image">
-							<input type="submit" onclick="removeUpload()" value="Upload your image" class="file-upload-btn">
-    
-                        </span>
-                    </div>
-                </form> -->
-				<form action = "/success" method = "post" enctype="multipart/form-data">
-					<input type='file' onchange="readURL(this);" name ="file" />
-					<hr>
-					<input type = "submit" value="Upload">
-					<!-- <img id="blah" src="#" alt="your image" /> -->
-				</form>
-            </div>
-        </div>
+    <section id="welcome-section" class="welcome-section">
+        <h1>Hey I am Zunnnn</h1>
+        <p>study information technology</p>
         <br>
-        <div class="row">
-            <div class="col-8 col-8-sm offset-3">
-                <div style="width:602px;height:402px;border:1px solid #000;">
-                    <img src="https://th.bing.com/th/id/OIP.mCiIWLlFn5U0nAxTnpFwQAHaFj?pid=ImgDet&w=158&h=118&c=7&dpr=1,3" id="profile-img-tag" width="600px" height="400px" />
+
+        <div id="wrapper">
+            <div id="quote-box">
+                <div class="quote-text">
+                    <i class="fa fa-quote-left"> </i><span id="text"></span>
+                </div>
+                <div class="quote-author">- <span id="author"></span></div>
+                <div class="buttons">
+                    <button class="button" id="new-quote">New quote</button>
                 </div>
             </div>
         </div>
-    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    </section>
 
-<script type="text/javascript">
-    function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+    <script>
+        const projectName = 'random-quote-machine';
+        let quotesData;
+        var colors = [
+        '#16a085',
+        '#27ae60',
+        '#2c3e50',
+        '#f39c12',
+        '#e74c3c',
+        '#9b59b6',
+        '#FB6964',
+        '#342224',
+        '#472E32',
+        '#BDBB99',
+        '#77B1A9',
+        '#73A857'
+        ];
+        var currentQuote = '',
+        currentAuthor = '';
 
-                reader.onload = function (e) {
-                $('#profile-img-tag').attr('src', e.target.result);
+        function getQuotes() {
+        return $.ajax({
+            headers: {
+            Accept: 'application/json'
+            },
+            url:
+            'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json',
+            success: function (jsonQuotes) {
+            if (typeof jsonQuotes === 'string') {
+                quotesData = JSON.parse(jsonQuotes);
+                console.log('quotesData');
+                console.log(quotesData);
             }
-
-                reader.readAsDataURL(input.files[0]);
             }
+        });
         }
-</script>
-	
-</body>
+
+        function getRandomQuote() {
+        return quotesData.quotes[
+            Math.floor(Math.random() * quotesData.quotes.length)
+        ];
+        }
+
+        function getQuote() {
+        let randomQuote = getRandomQuote();
+
+        currentQuote = randomQuote.quote;
+        currentAuthor = randomQuote.author;
+
+        $('#tweet-quote').attr(
+            'href',
+            'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' +
+            encodeURIComponent('"' + currentQuote + '" ' + currentAuthor)
+        );
+
+        $('#tumblr-quote').attr(
+            'href',
+            'https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption=' +
+            encodeURIComponent(currentAuthor) +
+            '&content=' +
+            encodeURIComponent(currentQuote) +
+            '&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button'
+        );
+
+        $('.quote-text').animate({ opacity: 0 }, 500, function () {
+            $(this).animate({ opacity: 1 }, 500);
+            $('#text').text(randomQuote.quote);
+        });
+
+        $('.quote-author').animate({ opacity: 0 }, 500, function () {
+            $(this).animate({ opacity: 1 }, 500);
+            $('#author').html(randomQuote.author);
+        });
+
+        var color = Math.floor(Math.random() * colors.length);
+        $('html body').animate(
+            {
+            backgroundColor: colors[color],
+            color: colors[color]
+            },
+            1000
+        );
+        $('.button').animate(
+            {
+            backgroundColor: colors[color]
+            },
+            1000
+        );
+        }
+
+        $(document).ready(function () {
+        getQuotes().then(() => {
+            getQuote();
+        });
+
+        $('#new-quote').on('click', getQuote);
+        });
+        </script>
+
+    <section id="projects" class="projects-section">
+        <h2 class="projects-section-header">
+            <img src="https://th.bing.com/th/id/R.ade18d512e729fff854b4bafd5a16a80?rik=LzU3OZUvBED9hA&riu=http%3a%2f%2forig05.deviantart.net%2f2365%2ff%2f2012%2f277%2f5%2fb%2fisland_by_3o2-d5gtdfm.png&ehk=18m10YmoJmXy%2biTJImfdbcDQLKzLcU5R2Hwpjib%2fkk4%3d&risl=&pid=ImgRaw&r=0
+                    " width="100" height="100"> 
+            <hr>
+            Project Trash Classification 
+        </h2>
+        
+        <div class="projects-grid">
+        
+            <!-- <a href="https://codepen.io/freeCodeCamp/full/qRZeGZ" target="_blank" class="project project-tile"> -->
+            <a target="_blank" class="project project-tile">
+            
+                <img class="project-image" src="staticFiles/ans.png" alt="project"/>
+                <p class="project-title">
+                    <span class="code">&lt;</span>
+                        Web phân loại rác 
+                    <span class="code">&#47;&gt;</span>
+                </p>
+            </a>
+        </div>
+        
+        <section id="tribute-info">
+            <h2 id="headline">Mô tả: </h2>
+            <div>
+                <h3>Tham khảo</h3>
+                <a id="tribute-link" href="https://www.bing.com/videos/search?q=waaste+classication&&view=detail&mid=FCF4536B62869A0704C0FCF4536B62869A0704C0&&FORM=VRDGAR" target="_blank">Recyclable Waste Classifier using Opencv Python | Computer Vision</a>.
+            <br>
+            <a
+            id="tribute-link"
+            href="https://github.com/vladalexey/webapp-trash-classification"
+            target="_blank"
+            >webapp trash classification</a>
+
+            </div>
+            <div>
+                <h3>About</h3>
+                <a>Trash Classification là web app cho phép người dùng upload 
+                    ảnh về các loại rác. Sau đó web sẽ xử lý và trả về loại rác 
+                    tương ứng.
+                </a>
+                <br>
+                <a>Ngoài ra, user có thể tìm hiểu thêm về loại rác đó và cách tái chế thông thông tin web đề cập bên dưới</a>
+            </div>
+            <br>
+            <hr>
+            <h2>Please choose a picture:</h2>
+        </section>
+        
+        <!-- <form action = "/success" method = "post" enctype="multipart/form-data">
+            <input type='file' onchange="readURL(this);" name ="file" />
+            <input type = "submit" value="Upload">
+        </form>
+        <br> -->
+
+
+        <div class="container">
+            <div class="row">
+                <div class = "col-8 col-sm-8 offset-3">
+                    <label for="avatar">Please choose a picture:</label>
+                    <!-- <form action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="image-upload-wrap">
+        
+                            <span class="btn btn-default btn-file">
+                                <input class="file-upload-input" onchange="readURL(this);" type="file" name="image">
+                                <input type="submit" onclick="removeUpload()" value="Upload your image" class="file-upload-btn">
+        
+                            </span>
+                        </div>
+                    </form> -->
+                    <br>
+                    <form action = "/success" method = "post" enctype="multipart/form-data">
+                        <input type='file' onchange="readURL(this);" name ="file" />
+                        <input type = "submit" value="Upload">
+                        <!-- <img id="blah" src="#" alt="your image" /> -->
+                    </form>
+                    <br>
+                </div>
+            </div>
+            <img src="https://th.bing.com/th/id/OIP.mCiIWLlFn5U0nAxTnpFwQAHaFj?pid=ImgDet&w=158&h=118&c=7&dpr=1,3" id="profile-img-tag" width="600px" height="400px" />
+        <!-- <img src="https://th.bing.com/th/id/OIP.mCiIWLlFn5U0nAxTnpFwQAHaFj?pid=ImgDet&w=158&h=118&c=7&dpr=1,3" id="profile-img-tag" width="600px" height="400px"  /> -->
+        
+        <script type="text/javascript">
+            function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+        
+                        reader.onload = function (e) {
+                        $('#profile-img-tag').attr('src', e.target.result);
+                    }
+        
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+        </script>
+        <br>
+        <br>
+    <section id="contact" class="contact-section">
+        <div class="contact-section-header">
+            <h2>Let's work together...</h2>
+        </div>
+        <div class="contact-links">
+            <a
+            href="https://www.facebook.com/LanaHoang237/"
+            target="_blank"
+            class="btn contact-details"><i class="fab fa-facebook-square"></i> Facebook</a>
+            <a
+            id="profile-link"
+            href="https://github.com/giunzz"
+            target="_blank"
+            class="btn contact-details"><i class="fab fa-github"></i> GitHub</a>
+            <a href="tel:0971439154" class="btn contact-details"><i class="fas fa-mobile-alt"></i> Call me</a>
+        </div>
+    </section>
+<br>
+    <footer>
+        <p>Sources
+            <a href="https://www.freecodecamp.com/" >freeCodeCamp</a>
+        </p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>
-
-

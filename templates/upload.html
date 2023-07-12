@@ -1,5 +1,6 @@
 <html>
 <head>
+	
 	<meta charset = "utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content = "ie=edge">
@@ -7,12 +8,30 @@
 	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<title>success</title>
+	<link rel="shortcut icon" href="staticFiles/favicon.ico">
+`
+
 </head>
 
 <style>
 	article, aside, figure, footer, header, hgroup, 
 	menu, nav, section { display: block; }
+	.search-form{
+	color: #999;	
+	}
+
+	#search {
+	width: 150px;
+	}
+
+	#contacts,
+	#organisations {
+		margin-top: 10px;
+		display: none;
+	}
 </style>
 
 <body>
@@ -41,68 +60,120 @@
         </a>
 		<div class=carousel-caption>
 			<h1 class="display-1">Phân loại rác</h1>
-			<h2>using ClassificationModule</h2>
+			<h2>Recyclable Waste Classifier using Opencv Python</h2>
 		</div>
     </div>
 	<h2>Ảnh đã upload</h2>
 	<p>
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-		<ul>
-		{% for message in messages %}
-			<li>{{ message }}</li>
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+			<ul>
+			{% for message in messages %}
+			  <li>{{ message }}</li>
 			{% endfor %}
-		</ul>
-		{% endif %}
-	{% endwith %}
+			</ul>
+		  {% endif %}
+		{% endwith %}
+	</p>
 	{% if filename %}
 		<div>
-			<img src="{{ url_for('display_image', filename=filename) }}">
-		</div>	
+			<img src="staticFiles/user.png">
+		</div>
 	{% endif %}
 	<div class="file-upload-content">
-		<h2> Predicted class of trash: {{pre}} </h2>
-		<!-- <img class="file-upload-image" src="{{pre}}" alt="Trash Image" /> -->
-
-		<img src="{{pre}}" alt="Predicted">
+		<h2> Predicted class of trash:</h2>
+		<img src ="/staticFiles/ans.png" alt ="prediction">
 	</div>
+	<div class="modal-body">
+		<p>Please choose the appropriate type of trash to be categorized?</p>
+			<div class="search-form">
+				<div>
+					<select id="search" name="state">
+						<option value="" class="selected">Select search category</option>
+						<option value="Rec">Recyclable
+							<video width="320" height="240" controls>
+								<source src="https://www.youtube.com/watch?v=edXimuzIVhk" type="video/mp4">
+							</video>
+						</option>
+						<option value="Haz">Hazardous</option>
+						<option value ="Food"> Food</option>
+						<option value ="Residual">Residual</option>
+				</select>
+				</div>
+			
+				<div id="Rec"> <em>Explain Recycable</em>
+					<p>recyclable waste means waste which has been separated from the waste stream, and set aside for purposes of recycling; “recycling” means the use, re-use or reclamation of material so that it re-enters an industrial process rather than becoming waste; "resident", in relation to the municipal area, means a person who is ordinarily resident within that area</p> 
+					<iframe width="647" height="364" src="https://www.youtube.com/embed/edXimuzIVhk" title="10 DIY Creative Ways to Reuse / Recycle Plastic Bottles part 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+					
+				<div id="Haz"> <em>Explain Hazardous</em>
+					<p> a hazardous waste is a waste with properties that make it dangerous or capable of having a harmful effect on human health or the environment. Hazardous waste is generated from many sources, ranging from industrial manufacturing process wastes to batteries and may come in many forms, including liquids, solids gases, and sludges.</p> 
+					<iframe width="663" height="374" src="https://www.youtube.com/embed/E_ui1maDVgs" title="What is a Hazardous Material and Hazardous Waste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				
+				</div>
+			
+				<div id="Food"> <em>Explain Food</em>
+					<p>rWasted food is an overarching term to describe food that was not used for its intended purpose and is 
+						managed in a variety of ways, such as donation to feed people, creation of animal feed, composting, anaerobic digestion, or disposal in landfills or combustion 
+						facilities,..</p> 
+						<iframe width="695" height="391" src="https://www.youtube.com/embed/EwS2Xc2IT_0" title="Food waste: an animated educational video | #FoodAwareProject" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+				
 
+				<div id="Residual"> <em>Explain Residual</em>
+					<p> Residual waste is the waste that is left once the recyclable waste has been separated 
+						(waste paper, plastic packaging, metal packaging, drinks packaging, biodegradable waste, glass and textiles). 
+						Even if you are good at separating waste, you will still have some residual waste left over. 
+						People usually throw residual waste in the rubbish bin.
+					</p>
+					<iframe width="663" height="374" src="https://www.youtube.com/embed/Qyu-fZ8BOnI" title="Proper Waste Management | How waste reduction and recycling help our environment" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+				
+					
+			</div>
+	<script>
+		$(document).ready(function() {
 
+	$("#search").change(function(e) {
+		hideAll();
+		$(e.target.options).removeClass();
+		var $selectedOption = $(e.target.options[e.target.options.selectedIndex]);
+		$selectedOption.addClass('selected');
+		$('#' + $selectedOption.val()).show();
+	});
+	});
+
+	function hideAll() {
+	$("").hide();
+	$("#Rec").hide();
+	$("#Haz").hide();
+	$("#Food").hide();
+	$("#Residual").hide();
+	}
 	
+	</script>
 
 </body>
+<br>
+<!-- Footer -->
+<footer class="bg-dark text-center text-white">
+	
+	<section id="contact" class="contact-section">
+        <div class="contact-section-header">
+            <h2>Let's work together...</h2>
+        </div>
+        <div class="contact-links">
+            <a href="https://www.facebook.com/LanaHoang237/" target="_white" class="btn contact-details color = text-white" =><i class="fab fa-facebook-square"></i> Facebook</a>
+            <a id="profile-link" href="https://github.com/giunzz" target="_white" class="btn contact-details color = text-white"><i class="fab fa-github"></i> GitHub</a>
+            <a href="tel:0971439154" class="btn contact-details color = text-white"><i class="fas fa-mobile-alt"></i> Call me</a>
+        </div>
+    </section>
+	<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+		Web app Trash Classification:
+		<a class="text-white" href="https://mdbootstrap.com/">Hoàng Ngọc Dung</a>
+	</div>
+</footer>
 
 </html>
 
 
-
-
- <!-- <!doctype html>
-<title>Python Flask Image Upload and Display Example</title>
- <h2>Select an image to upload and display</h2>
- <p>
-	 {% with messages = get_flashed_messages() %}
-	   {% if messages %}
-		 <ul>
-		 {% for message in messages %}
-		   <li>{{ message }}</li>
-		 {% endfor %}
-		 </ul>
-	   {% endif %}
-	 {% endwith %}
- </p>
- {% if filename %}
-	 <div>
-		 <img src="{{ url_for('display_image', filename=filename) }}">
-	 </div>
- {% endif %} -->
- <!-- <form method="post" action="/" enctype="multipart/form-data">
-	 <dl>
-		 <p>
-			 <input type="file" name="file" autocomplete="off" required>
-		 </p>
-	 </dl>
-	 <p>
-		 <input type="submit" value="Submit">
-	 </p> -->
- <!-- </form> -->

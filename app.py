@@ -4,11 +4,12 @@ import os
 import cv2
 import cvzone
 from werkzeug.utils import secure_filename
-from PIL import Image
 
-UPLOAD_FOLDER = 'static/uploads/'
+UPLOAD_FOLDER = 'staticFiles/'
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='staticFiles')
+# app = Flask(__name__)
+
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -19,7 +20,10 @@ def allowed_file(filename):
 
 def predict_img(i):
 
+	path = 'staticFiles/'
 	img = cv2.imread(i)
+	cv2.imwrite(os.path.join('staticFiles/user.png'), img)
+	
 	classifier = Classifier('Model/keras_model.h5', 'Model/labels.txt')
 	imgArrow = cv2.imread('arrow.png', cv2.IMREAD_UNCHANGED)
 	classIDBin = 0
@@ -63,8 +67,7 @@ def predict_img(i):
 
 	imgBackground[148:148 + 340, 159:159 + 454] = imgResize
 
-	path = 'static/uploads/'
-	cv2.imwrite(os.path.join('static/uploads/ans.png'), imgBackground)
+	cv2.imwrite(os.path.join('staticFiles/ans.png'), imgBackground)
 
 	return imgBackground
 
@@ -85,13 +88,13 @@ def upload_image():
 	if file and allowed_file(file.filename):
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
+	
 		f = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 		pre = predict_img(f)
-		#file.save(f)
 		pre = os.path.join(app.config['UPLOAD_FOLDER'], 'ans.png')
 
 		flash('Image successfully uploaded and displayed below')
+		# file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'user.png'))
 		return render_template('upload.html', filename=filename, pre = pre)
 	else:
 		flash('Allowed image types are -> png, jpg, jpeg, gif')
@@ -100,7 +103,7 @@ def upload_image():
 
 @app.route('/display/<filename>')
 def display_image(filename):
-	return redirect(url_for('static', filename='uploads/' + filename), code=301)
+	return redirect(url_for('staticFiles', filename=filename), code=301)
 
 if __name__ == '__main__':
 	app.run(debug=True)
