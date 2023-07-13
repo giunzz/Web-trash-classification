@@ -15,7 +15,7 @@
 
 - Điều này giúp môi trường chúng ta đang sống trở nên xanh sạch đẹp hơn bởi hành động của mỗi cá nhân.
 
-- [Video demo web](img/intro.mp4)
+- [Video demo web](vid.mp4)
 
 - Triển khai giao diện web sử dụng Flask
 
