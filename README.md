@@ -9,6 +9,8 @@
 
 ### 1. Mô tả
 
+- [Chall from Steam](https://drive.google.com/file/d/1eCUw0KGGQCwYLg70HY5_rrq22dcC1Hl5/view)
+  
 - Trang web được tạo ra với mục đích giúp người dùng dễ dàng phân loại các loại rác và hiểu lý do tại sao chúng được phân loại như vậy. Đồng thời gợi ý cho người dùng cách tái chế chúng.
 
   - ![1](img/1.png)
